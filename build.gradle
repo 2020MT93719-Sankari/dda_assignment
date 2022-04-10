@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java-library'
+
+group = 'com.cloud.assignment'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+archivesBaseName = 'cloud-login'
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+bootJar {
+	launchScript()
+}
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.6.6'
+	implementation 'mysql:mysql-connector-java:8.0.15'
+}
+
+
+
+jar {
+	manifest {
+		attributes(
+				'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+				'Main-Class': 'com.cloud.assignment.SpringApplication'
+		)
+	}
+}
+
+
