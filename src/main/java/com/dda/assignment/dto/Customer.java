@@ -20,4 +20,12 @@ public class Customer implements Serializable {
 
     String emailId;
 
+
+    @JoinColumns({
+            @JoinColumn(name = "customerId", referencedColumnName = "customerId"),
+            @JoinColumn(name = "planId", referencedColumnName = "planId")
+    })
+    @ManyToOne
+    public CustomerPlans customerPlans;
+
 }
