@@ -1,11 +1,18 @@
 package com.dda.assignment.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
 @Entity
 @Table(name = "customer")
+@Getter
+@Setter
+@EqualsAndHashCode
 public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -20,44 +27,9 @@ public class Customer implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pin_code")
-    StateCountry pinCode;
+    StateCountry stateCountry;
 
     @Column(name = "email_id")
     String emailId;
 
-    public BigInteger getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public StateCountry getPinCode() {
-        return pinCode;
-    }
-
-    public void setPinCode(StateCountry pinCode) {
-        this.pinCode = pinCode;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
 }

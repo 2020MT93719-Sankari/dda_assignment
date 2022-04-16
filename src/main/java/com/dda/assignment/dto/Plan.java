@@ -1,10 +1,17 @@
 package com.dda.assignment.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 
 @Entity
 @Table(name = "plan")
+@Getter
+@Setter
+@EqualsAndHashCode
 public class Plan {
 
     @Id
@@ -26,47 +33,4 @@ public class Plan {
     @Column(name = "data")
     Double data;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Double getData() {
-        return data;
-    }
-
-    public void setData(Double data) {
-        this.data = data;
-    }
-
-    public BigInteger getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getValidityDays() {
-        return validityDays;
-    }
-
-    public void setValidityDays(Integer validityDays) {
-        this.validityDays = validityDays;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
 }

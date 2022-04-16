@@ -1,9 +1,16 @@
 package com.dda.assignment.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
+@EqualsAndHashCode
 public class CustomerComplaints implements Serializable {
 
     @Id
@@ -12,18 +19,18 @@ public class CustomerComplaints implements Serializable {
     java.math.BigInteger id;
 
     @Column(unique=true)
-    @JoinColumn(name = "complaintId", referencedColumnName = "complaintId")
+    @JoinColumn(name = "complaint_id", referencedColumnName = "complaint_id")
     Complaint complaintId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contactNumber", referencedColumnName = "contactNumber")
-    CustomerPlans contactNumber;
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    Customer customerId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "complaintTypeName", referencedColumnName = "name")
+    @JoinColumn(name = "complaint_type_name", referencedColumnName = "name")
     ComplaintType complaintTypeName;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "servicePersonId", referencedColumnName = "id")
+    @JoinColumn(name = "service_person_id", referencedColumnName = "id")
     ServicePerson servicePersonId;
 }

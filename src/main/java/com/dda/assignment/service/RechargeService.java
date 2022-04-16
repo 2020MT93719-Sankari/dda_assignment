@@ -40,10 +40,10 @@ public class RechargeService {
         Optional<Customer> optionalCustomers = customerRepository.findById(customerId);
         Customer customerDetails = optionalCustomers.orElseThrow(() -> new RuntimeException("No customer found"));
 
-        Optional<StateCountry> optionalStateCountry = stateCountryRepository.findById(customerDetails.getPinCode().getPinCode());
+        Optional<StateCountry> optionalStateCountry = stateCountryRepository.findById(customerDetails.getStateCountry().getPinCode());
         StateCountry stateCountryDetails = optionalStateCountry.orElseThrow(() -> new RuntimeException("No location found"));
 
-        customerDetails.setPinCode(stateCountryDetails);
+        customerDetails.setStateCountry(stateCountryDetails);
         customerPlanDetails.setCustomer(customerDetails);
 
         customerPlanDetails.setExpireOn(customerPlanDetails.getExpireOn().plusDays(planDetails.getValidityDays()));
@@ -61,10 +61,10 @@ public class RechargeService {
         Optional<Customer> optionalCustomers = customerRepository.findById(customerId);
         Customer customerDetails = optionalCustomers.orElseThrow(() -> new RuntimeException("No customer found"));
 
-        Optional<StateCountry> optionalStateCountry = stateCountryRepository.findById(customerDetails.getPinCode().getPinCode());
+        Optional<StateCountry> optionalStateCountry = stateCountryRepository.findById(customerDetails.getStateCountry().getPinCode());
         StateCountry stateCountryDetails = optionalStateCountry.orElseThrow(() -> new RuntimeException("No location found"));
 
-        customerDetails.setPinCode(stateCountryDetails);
+        customerDetails.setStateCountry(stateCountryDetails);
         customerPlanDetails.setCustomer(customerDetails);
 
         return customerPlanDetails;

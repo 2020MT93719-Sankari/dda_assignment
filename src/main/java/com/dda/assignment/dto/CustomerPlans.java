@@ -1,5 +1,9 @@
 package com.dda.assignment.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -7,6 +11,9 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "customer_plans")
 @IdClass(CustomerPlansId.class)
+@Getter
+@Setter
+@EqualsAndHashCode
 public class CustomerPlans implements Serializable{
 
     @Id
@@ -28,48 +35,4 @@ public class CustomerPlans implements Serializable{
     @Column(name = "data_remaining")
     Double dataRemaining;
 
-
-    public Plan getPlan() {
-        return plan;
-    }
-
-    public void setPlan(Plan plan) {
-        this.plan = plan;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public void setDataRemaining(double dataRemaining) {
-        this.dataRemaining = dataRemaining;
-    }
-
-    public LocalDate getSubscribedOn() {
-        return subscribedOn;
-    }
-
-    public void setSubscribedOn(LocalDate subscribedOn) {
-        this.subscribedOn = subscribedOn;
-    }
-
-    public LocalDate getExpireOn() {
-        return expireOn;
-    }
-
-    public void setExpireOn(LocalDate expireOn) {
-        this.expireOn = expireOn;
-    }
-
-    public Double getDataRemaining() {
-        return dataRemaining;
-    }
-
-    public void setDataRemaining(Double dataRemaining) {
-        this.dataRemaining = dataRemaining;
-    }
 }
