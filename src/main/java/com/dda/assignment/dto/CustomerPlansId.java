@@ -1,32 +1,30 @@
 package com.dda.assignment.dto;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.math.BigInteger;
 
 @Embeddable
 public class CustomerPlansId implements Serializable {
-    @Column(name = "customerId")
-    BigInteger customerId;
 
-    @Column(name = "planId")
-    BigInteger planId;
+    private BigInteger plan;
 
-    public BigInteger getCustomerId() {
-        return customerId;
+    private BigInteger customer;
+
+    public BigInteger getPlan() {
+        return plan;
     }
 
-    public void setCustomerId(BigInteger customerId) {
-        this.customerId = customerId;
+    public void setPlan(BigInteger plan) {
+        this.plan = plan;
     }
 
-    public BigInteger getPlanId() {
-        return planId;
+    public BigInteger getCustomer() {
+        return customer;
     }
 
-    public void setPlanId(BigInteger planId) {
-        this.planId = planId;
+    public void setCustomer(BigInteger customer) {
+        this.customer = customer;
     }
 
     @Override
@@ -36,14 +34,14 @@ public class CustomerPlansId implements Serializable {
 
         CustomerPlansId that = (CustomerPlansId) o;
 
-        if (!customerId.equals(that.customerId)) return false;
-        return planId.equals(that.planId);
+        if (!plan.equals(that.plan)) return false;
+        return customer.equals(that.customer);
     }
 
     @Override
     public int hashCode() {
-        int result = customerId.hashCode();
-        result = 31 * result + planId.hashCode();
+        int result = plan.hashCode();
+        result = 31 * result + customer.hashCode();
         return result;
     }
 }

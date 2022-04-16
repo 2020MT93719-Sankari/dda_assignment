@@ -1,25 +1,46 @@
 package com.dda.assignment.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 
 @Entity
+@Table(name = "plan")
 public class Plan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     BigInteger id;
 
+    @Column(name = "name")
     String name;
 
-    int validityDays;
+    @Column(name = "validity_days")
+    Integer validityDays;
 
-    int amount;
+    @Column(name = "amount")
+    Integer amount;
 
+    @Column(name = "type")
+    String type;
 
+    @Column(name = "data")
+    Double data;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Double getData() {
+        return data;
+    }
+
+    public void setData(Double data) {
+        this.data = data;
+    }
 
     public BigInteger getId() {
         return id;
@@ -33,19 +54,19 @@ public class Plan {
         this.name = name;
     }
 
-    public int getValidityDays() {
+    public Integer getValidityDays() {
         return validityDays;
     }
 
-    public void setValidityDays(int validityDays) {
+    public void setValidityDays(Integer validityDays) {
         this.validityDays = validityDays;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 }

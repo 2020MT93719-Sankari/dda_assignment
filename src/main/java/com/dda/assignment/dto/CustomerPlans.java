@@ -2,44 +2,51 @@ package com.dda.assignment.dto;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
-public class CustomerPlans{
+@Table(name = "customer_plans")
+@IdClass(CustomerPlansId.class)
+public class CustomerPlans implements Serializable{
 
-    @EmbeddedId
-    public CustomerPlansId id;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    List<Plan> plan;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "plan")
-    List<Customer> customer;
-
+    @Column(name = "subscribed_on")
     LocalDate subscribedOn;
+
+    @Column(name = "expire_on")
     LocalDate expireOn;
-    Integer dataRemaining;
 
-    public CustomerPlansId getId() {
-        return id;
-    }
+    @Column(name = "data_remaining")
+    Double dataRemaining;
 
-    public List<Plan> getPlan() {
+
+    public Plan getPlan() {
         return plan;
     }
 
-    public void setPlan(List<Plan> plan) {
+    public void setPlan(Plan plan) {
         this.plan = plan;
     }
 
-    public List<Customer> getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(List<Customer> customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public void setDataRemaining(double dataRemaining) {
+        this.dataRemaining = dataRemaining;
     }
 
     public LocalDate getSubscribedOn() {
@@ -58,11 +65,11 @@ public class CustomerPlans{
         this.expireOn = expireOn;
     }
 
-    public Integer getDataRemaining() {
+    public Double getDataRemaining() {
         return dataRemaining;
     }
 
-    public void setDataRemaining(Integer dataRemaining) {
+    public void setDataRemaining(Double dataRemaining) {
         this.dataRemaining = dataRemaining;
     }
 }
