@@ -18,13 +18,13 @@ public class CustomerPlans implements Serializable{
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "plan_id")
-    private Plan plan;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
 
     @Column(name = "subscribed_on")
     LocalDate subscribedOn;

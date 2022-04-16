@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "customer")
@@ -22,14 +21,14 @@ public class Customer implements Serializable {
     @Column(name = "name")
     String name;
 
+    @Column(name = "email_id")
+    String emailId;
+
     @Column(name = "street_name")
     String streetName;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pin_code")
     StateCountry stateCountry;
-
-    @Column(name = "email_id")
-    String emailId;
 
 }

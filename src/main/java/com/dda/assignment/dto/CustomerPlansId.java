@@ -14,8 +14,7 @@ import java.math.BigInteger;
 @EqualsAndHashCode
 public class CustomerPlansId implements Serializable {
 
-    private BigInteger plan;
-
     private BigInteger customer;
+    private BigInteger plan;
 
 }

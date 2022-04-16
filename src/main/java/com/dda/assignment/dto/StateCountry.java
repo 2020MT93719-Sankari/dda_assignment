@@ -20,6 +20,9 @@ public class StateCountry {
     @Column(name = "pin_code")
     String pinCode;
 
+    @Column(name = "city")
+    String city;
+
     @Column(name = "state")
     String state;
 
