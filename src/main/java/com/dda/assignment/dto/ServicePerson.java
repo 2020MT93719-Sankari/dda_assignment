@@ -1,9 +1,12 @@
 package com.dda.assignment.dto;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Getter
 public class ServicePerson implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

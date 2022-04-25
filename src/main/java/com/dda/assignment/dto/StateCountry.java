@@ -1,9 +1,12 @@
 package com.dda.assignment.dto;
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@Getter
 public class StateCountry {
 
     @Id
@@ -12,4 +15,6 @@ public class StateCountry {
     String state;
 
     String country;
+
+    String city;
 }

@@ -1,10 +1,15 @@
 package com.dda.assignment.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class Complaint implements Serializable {
 
     @Id
@@ -13,10 +18,6 @@ public class Complaint implements Serializable {
     java.math.BigInteger complaintId;
 
     Date date;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customerId", referencedColumnName = "id")
-    Customer customerId;
 
     String description;
 
